@@ -1,0 +1,16 @@
+[Unit]
+Description=KlikFilm Aggregator API - Full Bypass Engine
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/klikfilm-api
+ExecStart=/opt/klikfilm-api/venv/bin/gunicorn -w 2 -b 127.0.0.1:5000 app:app
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
